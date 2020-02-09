@@ -1,10 +1,8 @@
 pipeline {
      agent any
      stages {
-          
           stage("Compile") {
                steps {
-                    sh "chmod +x gradlew"
                     sh "./gradlew compileJava"
                }
           }
@@ -27,9 +25,9 @@ pipeline {
           
           stage("Docker login") {
                steps {
-                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-credentials',
-                               usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-                         sh "docker login --username $USERNAME --password $PASSWORD"
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'Docker-Cred',
+                               usernameVariable: 'docid', passwordVariable: 'docpwd']]) {
+                         sh "docker login --username $docid --password $docpwd"
                     }
                }
           }
