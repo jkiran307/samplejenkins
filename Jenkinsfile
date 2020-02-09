@@ -20,7 +20,7 @@ pipeline {
 
           stage("Docker build") {
                steps {
-                    sh "docker build -t anandbprem/calculator ."
+                    sh "docker build -t jkiran307/calculator ."
                }
           }
           
@@ -35,7 +35,7 @@ pipeline {
           
           stage("Docker push") {
                steps {
-                    sh "docker push anandbprem/calculator"
+                    sh "docker push jkiran307/calculator"
                }
           }
      }
